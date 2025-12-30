@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# synthesis output except for the generated bitstream
+hdl/impl/pnr/*
+!hdl/impl/pnr/hdl.fs
+hdl/impl/gwsynthesis/*
+hdl/impl/temp/*
+hdl/impl/hdl_process_config.json
+
+# Data decoded by PulseView because it's heavy except for
+# a small example data stream
+tests/data/input/* 
+!tests/data/input/example.txt

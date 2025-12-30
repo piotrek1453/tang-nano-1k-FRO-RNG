@@ -1,0 +1,14 @@
+//Copyright (C)2014-2024 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//Tool Version: V1.9.11
+//Part Number: GW1NZ-LV1QN48C6/I5
+//Device: GW1NZ-1
+//Created Time: Thu 12 25 17:10:32 2025
+
+IO_LOC "clkOut" 23;
+IO_PORT "clkOut" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "generatorOut" 34;
+IO_PORT "generatorOut" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "clkIn" 47;
+IO_PORT "clkIn" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
