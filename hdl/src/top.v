@@ -1,7 +1,6 @@
-`default_nettype none
-
+`default_nettype none (* keep_hierarchy = "yes" *)
 module top #(
-    parameter integer CLOCK_DIVIDER = 27  //! on Tang Nano 1k - drop output data rate to 1 Mbit/s
+    parameter integer CLOCK_DIVIDER = 27  //! on Tang Nano 1k - drop output data rate to 500 kbit/s
 ) (
     input  wire clkIn,
     output wire generatorOut,
@@ -54,7 +53,7 @@ module top #(
   // divide the input clock, sample entropy bit
   always @(posedge clkIn) begin
     // input clock division
-    if (clk_div_counter == integer(CLOCK_DIVIDER / 2 - 1)) begin
+    if (clk_div_counter == (CLOCK_DIVIDER / 2 - 1)) begin
       clk_div_counter <= 'd0;
       divided_clk <= ~divided_clk;
 

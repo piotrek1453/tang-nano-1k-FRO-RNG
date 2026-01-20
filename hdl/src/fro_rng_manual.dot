@@ -1,0 +1,67 @@
+
+digraph FRO_RNG {
+    rankdir=LR;
+    splines=ortho;
+    nodesep=0.8;
+    ranksep=1.0;
+
+    node [
+        shape=box,
+        style="rounded",
+        fontname="Helvetica"
+    ];
+
+    edge [
+        fontname="Helvetica"
+    ];
+
+    /* =========================
+       Oscylatory pierścieniowe
+       ========================= */
+    subgraph cluster_ros {
+        label="Oscylatory pierścieniowe";
+        style=dashed;
+
+        ro1 [label="Oscylator pierścieniowy\n długość = 5"];
+        ro2 [label="Oscylator pierścieniowy\n długość = 7"];
+        ro3 [label="Oscylator pierścieniowy\n długość = 9"];
+        ro4 [label="Oscylator pierścieniowy\n długość = 11"];
+        ro5 [label="Oscylator pierścieniowy\n długość = 13"];
+    }
+
+    xor [label="XOR"];
+
+    ro1 -> xor;
+    ro2 -> xor;
+    ro3 -> xor;
+    ro4 -> xor;
+    ro5 -> xor;
+
+    /* =========================
+       Przerzutnik D
+       ========================= */
+    dff [label="Przerzutnik typu D"];
+
+    xor -> dff [label="D"];
+
+    data_out [label="Wyjście danych", shape=rarrow];
+    dff -> data_out [label="Q"];
+
+    /* =========================
+       Zegar i licznik
+       ========================= */
+    clk [label="Zegar\nczęstotliwość = 27 MHz"];
+    counter [label="Licznik\n długość = 13\n f ≈ 1 MHz"];
+
+    clk -> counter;
+    counter -> dff [label="CLK"];
+
+    clk_out [label="Wyjście zegarowe", shape=rarrow];
+    counter -> clk_out;
+
+    /* =========================
+       Wyrównanie wizualne
+       ========================= */
+    { rank=same; ro1; ro2; ro3; ro4; ro5 }
+    { rank=same; clk }
+}

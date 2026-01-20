@@ -1,5 +1,4 @@
-`default_nettype none
-
+`default_nettype none (* keep_hierarchy = "yes" *)
 module ring_oscillator #(
     parameter integer INVERTERS_COUNT = 7 //! number of inverters in generator, only odd number makes sense
 ) (
